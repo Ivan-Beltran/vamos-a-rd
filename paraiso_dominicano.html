@@ -665,6 +665,176 @@ textarea,
 select {
   font-family: var(--f-body);
 }
+
+/* ===== RUTA DEL VIAJE ===== */
+.route-section {
+  background: #f4f8f6;
+  padding: 86px 0;
+}
+
+.route-heading {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.route-eyebrow,
+.route-label {
+  display: block;
+  color: var(--sea);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.route-heading h2 {
+  margin: 10px 0 16px;
+}
+
+.route-heading h2 span {
+  color: var(--sea);
+}
+
+.route-heading .lead {
+  margin: 0 auto;
+}
+
+.route-stops {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.route-stop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 150px;
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #e1ebea;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(6, 52, 61, .07);
+}
+
+.route-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 17px;
+  background: #e9f5f3;
+  font-size: 27px;
+}
+
+.route-stop h3 {
+  margin: 8px 0;
+  color: var(--deep);
+  font-size: 21px;
+  overflow-wrap: anywhere;
+}
+
+.route-stop p {
+  color: #587077;
+  font-size: 14px;
+}
+
+.airport-code {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 7px;
+  background: var(--deep);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.route-connector {
+  text-align: center;
+  color: var(--sea);
+  font-size: 28px;
+}
+
+.route-map-card {
+  overflow: hidden;
+  border: 1px solid #dce8e7;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(6, 52, 61, .09);
+}
+
+.route-map-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 26px;
+}
+
+.route-map-title h3 {
+  margin-top: 5px;
+  color: var(--deep);
+  font-size: 24px;
+}
+
+.route-map-badge {
+  padding: 8px 13px;
+  border-radius: 99px;
+  background: #fff3cb;
+  color: var(--deep);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.flight-map {
+  width: 100%;
+  height: 430px;
+  background: url("https://i.ibb.co/4RP2KrQP/img12.jpg") center center / cover no-repeat;
+}
+
+.route-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 26px;
+}
+
+.route-map-footer p {
+  max-width: 62ch;
+  color: #587077;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .route-section {
+    padding: 60px 0;
+  }
+
+  .route-stops {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .route-connector {
+    transform: rotate(90deg);
+  }
+
+  .route-map-title,
+  .route-map-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .flight-map {
+    height: 340px;
+  }
+}
 </style>
 </head>
 
@@ -814,6 +984,71 @@ select {
     </div>
   </section>
 
+  <!-- Ruta del viaje -->
+<section id="ruta" class="route-section">
+  <div class="wrap">
+    <div class="route-heading">
+      <span class="route-eyebrow">EL COMIENZO DE TU AVENTURA</span>
+      <h2>Tu ruta hacia el <span>paraíso</span></h2>
+      <p class="lead">
+        Salimos desde San Salvador, El Salvador,
+        con destino a Punta Cana, República Dominicana.
+      </p>
+    </div>
+
+    <div class="route-stops">
+      <article class="route-stop">
+        <div class="route-icon">✈️</div>
+        <div>
+          <span class="route-label">PUNTO DE SALIDA</span>
+          <h3>San Salvador</h3>
+          <p>El Salvador</p>
+          <span class="airport-code">SAL</span>
+        </div>
+      </article>
+
+      <div class="route-connector">✈</div>
+
+      <article class="route-stop">
+        <div class="route-icon">🌴</div>
+        <div>
+          <span class="route-label">PUNTO DE LLEGADA</span>
+          <h3>Aeropuerto Internacional de Punta Cana</h3>
+          <p>República Dominicana</p>
+          <span class="airport-code">PUJ</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="route-map-card">
+      <div class="route-map-title">
+        <div>
+          <span class="route-label">RECORRIDO AÉREO</span>
+          <h3>De Centroamérica al Caribe</h3>
+        </div>
+        <span class="route-map-badge">SAL → PUJ</span>
+      </div>
+
+      <div id="flight-map" class="flight-map"></div>
+
+      <div class="route-map-footer">
+        <p>
+          La línea representa el trayecto geográfico entre ambos
+          aeropuertos. La ruta real depende de la aerolínea.
+        </p>
+
+        <a
+          class="btn"
+          href="https://www.google.com/maps/dir/?api=1&origin=El+Salvador+International+Airport&destination=Punta+Cana+International+Airport"
+          target="_blank"
+          rel="noopener noreferrer">
+          Ver en Google Maps ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
   <section id="incluye">
     <div class="wrap">
       <h2>Qué incluye y qué no</h2>
@@ -832,7 +1067,7 @@ select {
             <li>Asistencia básica al viajero</li>
           </ul>
         </details>
-        <details class="no">
+        <details class="no" open>
           <summary>No incluido</summary>
           <ul>
             <li>Gastos personales y compras de recuerdos</li>
